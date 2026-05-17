@@ -1,0 +1,44 @@
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 85vh;">
+  <div class="card border-0 shadow-lg p-4 p-md-5" style="width:100%; max-width:420px; border-radius:20px;">
+    <div class="text-center mb-4">
+      <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+           style="width:70px; height:70px; background:#0d0d2b;">
+        <i class="fas fa-user-plus text-warning fs-3"></i>
+      </div>
+      <h3 class="fw-bold">Register</h3>
+      <p class="text-muted small">Create an account to join CineReserve</p>
+    </div>
+
+    <div *ngIf="error" class="alert alert-danger small py-2">
+      <i class="fas fa-exclamation-triangle me-2"></i>{{ error }}
+    </div>
+    <div *ngIf="success" class="alert alert-success small py-2">
+      <i class="fas fa-check-circle me-2"></i>{{ success }}
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Username</label>
+      <input type="text" class="form-control" [(ngModel)]="username"
+             placeholder="Choose a username" [disabled]="loading">
+    </div>
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Email Address</label>
+      <input type="email" class="form-control" [(ngModel)]="email"
+             placeholder="name@example.com" [disabled]="loading">
+    </div>
+    <div class="mb-4">
+      <label class="form-label fw-semibold">Password</label>
+      <input type="password" class="form-control" [(ngModel)]="password"
+             placeholder="••••••••" [disabled]="loading">
+    </div>
+
+    <button class="btn btn-warning btn-lg w-100 fw-bold" (click)="register()" [disabled]="loading">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+      {{ loading ? 'Creating Account...' : 'Register' }}
+    </button>
+
+    <p class="text-center mt-3 text-muted small">
+      Already have an account? <a routerLink="/login" class="text-warning fw-semibold">Login here</a>
+    </p>
+  </div>
+</div>
